@@ -1,0 +1,70 @@
+create database project
+
+전시회 db
+create table exhibition(
+   exNum int primary key not null,
+    exName varchar(50) not null,
+    exPost varchar(30) not null,
+    exPoto1 varchar(50),
+    exPoto2 varchar(50),
+    exPoto3 varchar(50),
+    exStart varchar(30) not null,
+    exEnd varchar(30) not null,
+    exContent varchar(3000) not null,
+    exPrice int not null,
+    exSold int not null,
+    exMap varchar(100),
+    exCondition int not null,
+    exGrade int not null
+);
+
+회원db
+create table member(
+    id varchar(20) primary key not null,
+    pw varchar(30) not null,
+    userName varchar(20) not null,
+    userGender varchar(10) not null,
+    userEmail varchar(20) not null,
+    userPhone varchar(30) not null
+);
+
+구매 db (구매번호,)
+create table buy(
+    buyNum int not null,
+    buyUserID varchar(20) primary key not null,
+    buyExNum int not null,
+    buyCount int not null,
+    buyPrice int not null,
+    buyDate varchar(30) not null,
+    buyUse int not null,
+    buyUseDate varchar(30) not null
+);
+
+포인트 db (포인트번호(오토키,pk),회원아이디(fk),포인트 사용날짜, 포인트 적립/사용 이유(회원가입,생일,리뷰작성,구매),사용/적립 포인트)
+create table project.pointbook(
+	pointNum int not null primary key,
+    pointUserID varchar(40) not null,
+    pointDate varchar(50) not null,
+    pointReason varchar(50) not null,
+    point int not null
+);
+
+후기db (번호,전시회번호,유저아이디,리뷰내용,사진(선택),별점,등록날짜)
+create table review(
+    reviewNum int primary key not null,
+    reviewExNum int not null,
+    reviewUserID varchar(30) not null,
+    reviewContent varchar(2000) not null,
+    reviewFile varchar(50),
+    reviewGrade double not null,
+    reviewDate varchar(50) not null
+);
+
+찜하기 db
+CREATE TABLE `like2` (
+  `likeNum` int NOT NULL AUTO_INCREMENT,
+  `likeUserID` varchar(40) NOT NULL,
+  `likeExNum` int NOT NULL,
+  `likeCondition` int NOT NULL,
+  PRIMARY KEY (`likeNum`)
+);
